@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Usuários Cadastrados{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Relação de usuários cadastrados</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome do usuário</th>
+            <th>E-mail</th>
+            <th>Confirmado?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+        <tr>
+            <td>{{ u.username }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ 'True' if u.confirmed else 'False' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
