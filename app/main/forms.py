@@ -12,12 +12,14 @@ class CadastroForm(FlaskForm):
     sobrenome = StringField('Sobrenome', validators=[DataRequired()])
     instituicao = StringField('Instituição', validators=[DataRequired()])
 
-   disciplinas = SelectField('Disciplina', choices=[
-    ('matematica', 'Matemática'),
-    ('portugues', 'Português'),
-    ('historia', 'História'),
-    ('geografia', 'Geografia'),
-],
+    disciplinas = SelectField(
+        'Disciplina',
+        choices=[
+            ('matematica', 'Matemática'),
+            ('portugues', 'Português'),
+            ('historia', 'História'),
+            ('geografia', 'Geografia'),
+        ],
         validators=[DataRequired()]
     )
 
