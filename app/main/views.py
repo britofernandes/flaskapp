@@ -3,7 +3,6 @@ from . import main
 from ..models import User, Cadastro
 from .forms import CadastroForm
 from .. import db
-from app import db
 
 
 @main.route('/')
@@ -29,6 +28,7 @@ def formulario():
 
     cadastros = Cadastro.query.all()
     return render_template('formulario.html', form=form, cadastros=cadastros)
+
 
 @main.route('/usuarios')
 def usuarios():
