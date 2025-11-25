@@ -98,3 +98,15 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+class Cadastro(db.Model):
+    __tablename__ = 'cadastros'
+
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(64), nullable=False)
+    sobrenome = db.Column(db.String(64), nullable=False)
+    instituicao = db.Column(db.String(128), nullable=False)
+    disciplinas = db.Column(db.String(255), nullable=False)  # lista convertida em string
+
+    def __repr__(self):
+        return f'<Cadastro {self.nome}>'

@@ -2,6 +2,7 @@ from flask import render_template
 from . import main
 from ..models import User
 from .forms import CadastroForm
+from .. import db
 
 
 @main.route('/')
@@ -12,17 +13,24 @@ def index():
 @main.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     form = CadastroForm()
-    resultados = None
 
     if form.validate_on_submit():
-        resultados = {
-            'nome': form.nome.data,
-            'sobrenome': form.sobrenome.data,
-            'instituicao': form.instituicao.data,
-            'disciplinas': form.disciplinas.data,
-        }
 
-    return render_template('formulario.html', form=form, resultados=resultados)
+        disciplinas_str = ", ".join(form.disciplinas.data)
+
+        cadastro = Cadastro(
+            nome=form.nome.data,
+            sobrenome=form.sobrenome.data,
+            instituicao=form.instituicao.data,
+            disciplinas=disciplinas_str
+        )
+
+        db.session.add(cadastro)
+        db.session.commit()
+
+        return redirect(url_for('main.usuarios'))
+
+    return render_template('formulario.html', form=form)
 
 @main.route('/usuarios')
 def usuarios():
