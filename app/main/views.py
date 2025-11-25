@@ -10,3 +10,4 @@ def index():
 def usuarios():
     users = User.query.all()
     return render_template('usuarios.html', users=users)
+
