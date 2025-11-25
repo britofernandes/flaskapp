@@ -1,64 +1,71 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulário</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Cadastro</h2>
+{% block title %}Formulário{% endblock %}
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+{% block page_content %}
 
-    <p>
-        {{ form.nome.label }}<br>
-        {{ form.nome(size=32) }}
-    </p>
+<div class="container mt-4">
 
-    <p>
-        {{ form.sobrenome.label }}<br>
-        {{ form.sobrenome(size=32) }}
-    </p>
+    <h2 class="mb-4">Cadastro</h2>
 
-    <p>
-        {{ form.instituicao.label }}<br>
-        {{ form.instituicao(size=32) }}
-    </p>
+    <form method="POST">
+        {{ form.hidden_tag() }}
 
-    <p>
-        {{ form.disciplinas.label }}<br>
-        {{ form.disciplinas(size=6, multiple=True) }}
-    </p>
+        <div class="mb-3">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control", placeholder="Digite seu nome") }}
+        </div>
 
-    <p>{{ form.submit() }}</p>
-</form>
+        <div class="mb-3">
+            {{ form.sobrenome.label(class="form-label") }}
+            {{ form.sobrenome(class="form-control", placeholder="Digite seu sobrenome") }}
+        </div>
 
-<hr>
+        <div class="mb-3">
+            {{ form.instituicao.label(class="form-label") }}
+            {{ form.instituicao(class="form-control", placeholder="Instituição de ensino") }}
+        </div>
 
-{% if resultados %}
-<h3>Resultado do Formulário</h3>
+        <div class="mb-3">
+            {{ form.disciplinas.label(class="form-label") }}
+            {{ form.disciplinas(class="form-select", size=6, multiple=True) }}
+        </div>
 
-<table border="1" cellpadding="6">
-    <tr>
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Instituição</th>
-        <th>Disciplinas</th>
-    </tr>
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
+    </form>
 
-    <tr>
-        <td>{{ resultados.nome }}</td>
-        <td>{{ resultados.sobrenome }}</td>
-        <td>{{ resultados.instituicao }}</td>
-        <td>
-            {% for d in resultados.disciplinas %}
-                {{ d }}{% if not loop.last %}, {% endif %}
-            {% endfor %}
-        </td>
-    </tr>
-</table>
-{% endif %}
+    {% if resultados %}
+    <hr class="my-4">
 
-</body>
-</html>
+    <h3>Resultado do Formulário</h3>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Instituição</th>
+                <th>Disciplinas</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ resultados.nome }}</td>
+                <td>{{ resultados.sobrenome }}</td>
+                <td>{{ resultados.instituicao }}</td>
+                <td>
+                    {% for d in resultados.disciplinas %}
+                        {{ d }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+
+</div>
+
+{% endblock %}
