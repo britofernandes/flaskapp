@@ -19,7 +19,7 @@ def formulario():
             nome=form.nome.data,
             sobrenome=form.sobrenome.data,
             instituicao=form.instituicao.data,
-            disciplinas=",".join(form.disciplinas.data)
+            disciplinas=form.disciplinas.data
         )
         db.session.add(cadastro)
         db.session.commit()
