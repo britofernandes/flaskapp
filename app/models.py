@@ -94,19 +94,19 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Cadastro(db.Model):
+    __tablename__ = 'cadastros'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(64), nullable=False)
+    sobrenome = db.Column(db.String(64), nullable=False)
+    instituicao = db.Column(db.String(128), nullable=False)
+    disciplinas = db.Column(db.String(256), nullable=False)  # será salvo como texto separado por vírgulas
+
+    def __repr__(self):
+        return f'<Cadastro {self.nome} {self.sobrenome}>'
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class Cadastro(db.Model):
-    __tablename__ = 'cadastros'
-
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(64), nullable=False)
-    sobrenome = db.Column(db.String(64), nullable=False)
-    instituicao = db.Column(db.String(128), nullable=False)
-    disciplinas = db.Column(db.String(255), nullable=False)  # lista convertida em string
-
-    def __repr__(self):
-        return f'<Cadastro {self.nome}>'
