@@ -1,6 +1,8 @@
 from flask import render_template
 from . import main
 from ..models import User
+from .forms import CadastroForm
+
 
 @main.route('/')
 def index():
@@ -21,7 +23,6 @@ def formulario():
         }
 
     return render_template('formulario.html', form=form, resultados=resultados)
-
 
 @main.route('/usuarios')
 def usuarios():
