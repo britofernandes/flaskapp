@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+</head>
+<body>
+
+<h2>Cadastro</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.nome.label }}<br>
+        {{ form.nome(size=32) }}
+    </p>
+
+    <p>
+        {{ form.sobrenome.label }}<br>
+        {{ form.sobrenome(size=32) }}
+    </p>
+
+    <p>
+        {{ form.instituicao.label }}<br>
+        {{ form.instituicao(size=32) }}
+    </p>
+
+    <p>
+        {{ form.disciplinas.label }}<br>
+        {{ form.disciplinas(size=6, multiple=True) }}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+
+<hr>
+
+{% if resultados %}
+<h3>Resultado do Formulário</h3>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Instituição</th>
+        <th>Disciplinas</th>
+    </tr>
+
+    <tr>
+        <td>{{ resultados.nome }}</td>
+        <td>{{ resultados.sobrenome }}</td>
+        <td>{{ resultados.instituicao }}</td>
+        <td>
+            {% for d in resultados.disciplinas %}
+                {{ d }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+{% endif %}
+
+</body>
+</html>
