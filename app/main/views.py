@@ -14,32 +14,21 @@ def index():
 @main.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     form = CadastroForm()
-    resultados = None
 
     if form.validate_on_submit():
-
-        # transformar lista em string para salvar
-        disciplinas_str = ",".join(form.disciplinas.data)
-
         cadastro = Cadastro(
             nome=form.nome.data,
             sobrenome=form.sobrenome.data,
             instituicao=form.instituicao.data,
-            disciplinas=disciplinas_str
+            disciplinas=",".join(form.disciplinas.data)
         )
-
         db.session.add(cadastro)
         db.session.commit()
 
-        resultados = {
-            'nome': cadastro.nome,
-            'sobrenome': cadastro.sobrenome,
-            'instituicao': cadastro.instituicao,
-            'disciplinas': cadastro.disciplinas.split(','),
-        }
+    # AQUI: pegar TODOS os registros
+    cadastros = Cadastro.query.all()
 
-    return render_template('formulario.html', form=form, resultados=resultados)
-
+    return render_template('formulario.html', form=form, cadastros=cadastros)
 
 @main.route('/usuarios')
 def usuarios():
