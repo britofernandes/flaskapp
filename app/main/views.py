@@ -25,9 +25,9 @@ def formulario():
         db.session.add(cadastro)
         db.session.commit()
 
-    # AQUI: pegar TODOS os registros
-    cadastros = Cadastro.query.all()
+        return redirect(url_for('main.formulario'))
 
+    cadastros = Cadastro.query.all()
     return render_template('formulario.html', form=form, cadastros=cadastros)
 
 @main.route('/usuarios')

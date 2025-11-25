@@ -36,22 +36,21 @@
         </button>
     </form>
 
-    {% if resultados %}
     <hr class="my-4">
 
-    <h3>Resultado do Formulário</h3>
+<h3>Registros Cadastrados</h3>
 
-    <table class="table table-bordered table-striped mt-3">
-        <thead class="table-dark">
-            <tr>
-                <th>Nome</th>
-                <th>Sobrenome</th>
-                <th>Instituição</th>
-                <th>Disciplinas</th>
-            </tr>
-        </thead>
+<table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Instituição</th>
+            <th>Disciplinas</th>
+        </tr>
+    </thead>
 
-        <tbody>
+    <tbody>
         {% for c in cadastros %}
         <tr>
             <td>{{ c.nome }}</td>
@@ -61,8 +60,8 @@
         </tr>
         {% endfor %}
     </tbody>
-    </table>
-    {% endif %}
+</table>
+
 
 </div>
 
