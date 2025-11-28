@@ -29,19 +29,19 @@ def professores():
 
 
 @main.route('/disciplinas')
-def index():
+def disciplinas():
     return render_template('disciplinas.html')
 
 @main.route('/alunos')
-def index():
+def alunos():
     return render_template('alunos.html')
 
 @main.route('/cursos')
-def index():
+def cursos():
     return render_template('cursos.html')   
 
 @main.route('/ocorrencias')
-def index():
+def ocorrencias():
     return render_template('ocorrencias.html')       
 
 # @main.route('/usuarios')
