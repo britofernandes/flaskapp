@@ -98,9 +98,7 @@ class Cadastro(db.Model):
     __tablename__ = 'cadastros'
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(64), nullable=False)
-    sobrenome = db.Column(db.String(64), nullable=False)
-    instituicao = db.Column(db.String(128), nullable=False)
-    disciplinas = db.Column(db.String(256), nullable=False)  # será salvo como texto separado por vírgulas
+    disciplinas = db.Column(db.String(256), nullable=False)
 
     def __repr__(self):
         return f'<Cadastro {self.nome} {self.sobrenome}>'

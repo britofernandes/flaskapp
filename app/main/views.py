@@ -10,24 +10,22 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/formulario', methods=['GET', 'POST'])
-def formulario():
+@main.route('/professores', methods=['GET', 'POST'])
+def professores():
     form = CadastroForm()
 
     if form.validate_on_submit():
         cadastro = Cadastro(
             nome=form.nome.data,
-            sobrenome=form.sobrenome.data,
-            instituicao=form.instituicao.data,
             disciplinas=form.disciplinas.data
         )
         db.session.add(cadastro)
         db.session.commit()
 
-        return redirect(url_for('main.formulario'))
+        return redirect(url_for('main.professores'))
 
     cadastros = Cadastro.query.all()
-    return render_template('formulario.html', form=form, cadastros=cadastros)
+    return render_template('professores.html', form=form, cadastros=cadastros)
 
 
 @main.route('/usuarios')

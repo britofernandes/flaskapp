@@ -17,16 +17,6 @@
         </div>
 
         <div class="mb-3">
-            {{ form.sobrenome.label(class="form-label") }}
-            {{ form.sobrenome(class="form-control", placeholder="Digite seu sobrenome") }}
-        </div>
-
-        <div class="mb-3">
-            {{ form.instituicao.label(class="form-label") }}
-            {{ form.instituicao(class="form-control", placeholder="Instituição de ensino") }}
-        </div>
-
-        <div class="mb-3">
             {{ form.disciplinas.label(class="form-label") }}
             {{ form.disciplinas(class="form-control") }}
         </div>
@@ -44,8 +34,6 @@
     <thead class="table-dark">
         <tr>
             <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Instituição</th>
             <th>Disciplinas</th>
         </tr>
     </thead>
@@ -54,8 +42,6 @@
         {% for c in cadastros %}
         <tr>
             <td>{{ c.nome }}</td>
-            <td>{{ c.sobrenome }}</td>
-            <td>{{ c.instituicao }}</td>
             <td>{{ c.disciplinas }}</td>
         </tr>
         {% endfor %}

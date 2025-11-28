@@ -9,16 +9,15 @@ class NameForm(FlaskForm):
 
 class CadastroForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired()])
-    sobrenome = StringField('Sobrenome', validators=[DataRequired()])
-    instituicao = StringField('Instituição', validators=[DataRequired()])
-
     disciplinas = SelectField(
         'Disciplina',
         choices=[
-            ('matematica', 'Matemática'),
-            ('portugues', 'Português'),
-            ('historia', 'História'),
-            ('geografia', 'Geografia'),
+            ('DSWA5', 'DSWA5'),
+            ('GPSA5', 'GPSA5'),
+            ('IHCA5', 'IHCA5'),
+            ('SODA5', 'SODA5'),
+            ('PJIA5', 'PJIA5'),
+            ('TCOA5', 'TCOA5'),
         ],
         validators=[DataRequired()]
     )
