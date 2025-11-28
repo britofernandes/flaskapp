@@ -3,11 +3,14 @@ from . import main
 from ..models import User, Cadastro
 from .forms import CadastroForm
 from .. import db
+from flask_moment import Moment
+from datetime import datetime
 
+moment = Moment()
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', current_time=datetime.utcnow())
 
 @main.route('/professores', methods=['GET', 'POST'])
 def professores():
@@ -30,19 +33,19 @@ def professores():
 
 @main.route('/disciplinas')
 def disciplinas():
-    return render_template('disciplinas.html')
+    return render_template('disciplinas.html', current_time=datetime.utcnow())
 
 @main.route('/alunos')
 def alunos():
-    return render_template('alunos.html')
+    return render_template('alunos.html', current_time=datetime.utcnow())
 
 @main.route('/cursos')
 def cursos():
-    return render_template('cursos.html')   
+    return render_template('cursos.html', current_time=datetime.utcnow())
 
 @main.route('/ocorrencias')
 def ocorrencias():
-    return render_template('ocorrencias.html')       
+    return render_template('ocorrencias.html', current_time=datetime.utcnow())     
 
 # @main.route('/usuarios')
 # def usuarios():
