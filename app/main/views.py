@@ -22,6 +22,7 @@ def professores():
         db.session.add(cadastro)
         db.session.commit()
 
+        # Redireciona corretamente após salvar
         return redirect(url_for('main.professores'))
 
     cadastros = Cadastro.query.all()
@@ -32,4 +33,3 @@ def professores():
 def usuarios():
     users = User.query.all()
     return render_template('usuarios.html', users=users)
-
