@@ -9,7 +9,6 @@ from .. import db
 def index():
     return render_template('index.html')
 
-
 @main.route('/professores', methods=['GET', 'POST'])
 def professores():
     form = CadastroForm()
@@ -29,7 +28,23 @@ def professores():
     return render_template('professores.html', form=form, cadastros=cadastros)
 
 
-@main.route('/usuarios')
-def usuarios():
-    users = User.query.all()
-    return render_template('usuarios.html', users=users)
+@main.route('/disciplinas')
+def index():
+    return render_template('disciplinas.html')
+
+@main.route('/alunos')
+def index():
+    return render_template('alunos.html')
+
+@main.route('/cursos')
+def index():
+    return render_template('cursos.html')   
+
+@main.route('/ocorrencias')
+def index():
+    return render_template('ocorrencias.html')       
+
+# @main.route('/usuarios')
+# def usuarios():
+#     users = User.query.all()
+#     return render_template('usuarios.html', users=users)
