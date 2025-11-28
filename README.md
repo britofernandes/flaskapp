@@ -1,1 +1,2 @@
-# Aula 090. Autenticação de usuário
+# Avaliação Semestral - 28/11/2025
+
