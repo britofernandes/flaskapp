@@ -101,7 +101,7 @@ class Cadastro(db.Model):
     disciplinas = db.Column(db.String(256), nullable=False)
 
     def __repr__(self):
-        return f'<Cadastro {self.nome} {self.sobrenome}>'
+        return f'<Cadastro {self.nome}>'
 
 
 @login_manager.user_loader
